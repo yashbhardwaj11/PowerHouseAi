@@ -1,6 +1,3 @@
-# PowerHouseAi
-This is a weather app
-
 # PowerhouseAi
 
 PowerhouseAi is a android app for checking current location weather using openweathermap api.

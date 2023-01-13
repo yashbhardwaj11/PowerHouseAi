@@ -39,11 +39,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private var PERMISSION_ID : Int = 42
     private lateinit var showMoreBT : Button
+    private lateinit var api_key : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        
+        api_key = "your_api_key"
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -188,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startFillingLocation(latitude: Double, longitude: Double) {
-        val url = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=d14ce72bc6f2849598263e88bf643943"
+        val url = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$api_key"
 
         val requestQueue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,url,null,

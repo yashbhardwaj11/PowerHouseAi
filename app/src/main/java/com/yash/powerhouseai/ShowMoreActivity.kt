@@ -27,12 +27,15 @@ import java.util.*
 class ShowMoreActivity : AppCompatActivity() {
     private lateinit var binding : ActivityShowMoreBinding
     private  var stateName: String? = null
+    private lateinit var api_key : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShowMoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         stateName = intent.getStringExtra("stateName")
+        
+        api_key = "your_api_key"
 
         if (isInternetAvailable()){
             getCountryData(stateName)
@@ -100,7 +103,7 @@ class ShowMoreActivity : AppCompatActivity() {
     }
 
     private fun startFillingLocation(stateName: String?,countryName : String) {
-        val url = "https://api.openweathermap.org/data/2.5/weather?q=$stateName,$countryName&APPID=d14ce72bc6f2849598263e88bf643943"
+        val url = "https://api.openweathermap.org/data/2.5/weather?q=$stateName,$countryName&APPID=$api_key"
 
         val requestQueue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(
